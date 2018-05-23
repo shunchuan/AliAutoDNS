@@ -1,0 +1,11 @@
+.vs
+packages
+TestResults
+AliHelper/obj/
+AliHelper/bin/
+CaoSCAutoDNS/bin/
+CaoSCAutoDNS/obj/
+UnitTest/obj/
+UnitTest/bin/
+CaoSCAutoDNS/App.config
+UnitTest/App.config
