@@ -38,8 +38,8 @@ namespace CaoSCAutoDNS.Methods
                         }
                         if (ip != nowIp)
                         {
-                            var DomainRecords = GetDescribeDomainRecords(config);
-                            CheckAddOrUpdate(config,DomainRecords);
+                            var domainRecordsResult = GetDescribeDomainRecords(config);
+                            CheckAddOrUpdate(config,domainRecordsResult);
                         }
 
                     }
@@ -55,8 +55,9 @@ namespace CaoSCAutoDNS.Methods
             catch (ArgumentNullException ex)
             {
                 Log.ConsoleWrite(ex.Message);
-                Log.ConsoleWriteNoDate("系统已停止...");
+                Log.ConsoleWriteNoDate("系统已停止,按任意键退出...");
             }
+            Console.Read();
         }
 
         /// <summary>
@@ -74,19 +75,34 @@ namespace CaoSCAutoDNS.Methods
             return HttpUtility.Get(url);
         }
 
+        /// <summary>
+        /// 检查返回的获取解析列表是否为空或解析记录是否不同
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private AddOrUpdate CheckAddOrUpdate(Config config, string result)
         {
-            var jjson= JsonConvert.DeserializeObject<dynamic>(result);
-            jjson["DomainRecords"].Count;
-            var dynamicJson = DynamicJson.Parse(result);
-            //if (dynamicJson.TotalCount == 0)
-            //    return AddOrUpdate.ADD;
-            var Record = dynamicJson.DomainRecords.Record;
-            if( Record.Length > 0)
+            var json = JsonConvert.DeserializeObject<dynamic>(result);
+            if (json.TotalCount == 0)
             {
-                return AddOrUpdate.UPDATE;
+                return AddOrUpdate.ADD;
             }
-            return AddOrUpdate.ADD;
+            var domainRecords = json["DomainRecords"]["Record"];
+            if (domainRecords.Count == 0)
+            {
+                return AddOrUpdate.ADD;
+            }
+
+            foreach (var record in domainRecords)
+            {
+                if (record["RR"] == config.SetDNSHostRecord)
+                {
+                    return AddOrUpdate.UPDATE;
+                }
+            }
+
+            return AddOrUpdate
         }
         /// <summary>
         /// 初始化系统参数，有字段为空则抛出ArgumentNullException异常
