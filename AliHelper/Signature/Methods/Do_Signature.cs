@@ -25,7 +25,8 @@ namespace AliHelper.Signature.Methods
             var dicParameter = parameter.ToDictionary();
             var aaa = dicParameter.Concat(dictAPI);
             //拼接并排序的胡字符串
-            var dict = dicParameter.Concat(dictAPI).OrderBy(i => i.Key).ToDictionary(i => i.Key,item=>item.Value);
+            //var dict = dicParameter.Concat(dictAPI).OrderBy(i => i.Key ).ToDictionary(i => i.Key,item=>item.Value);
+            var dict = Common.AsciiDictionarySort(dicParameter.Concat(dictAPI).ToDictionary(i => i.Key, item => item.Value));
             var CanonicalizedQueryString =dict.ToNotNullKeyValueEncoderString("=", "&");
             StringBuilder sb = new StringBuilder();
             sb.Append(HTTPMethod);
@@ -33,6 +34,17 @@ namespace AliHelper.Signature.Methods
             sb.Append(Methods.Common.GetURLEncoder("/"));
             sb.Append("&");
             sb.Append(Methods.Common.GetURLEncoder(CanonicalizedQueryString));
+            return sb.ToString();
+        }
+
+        public string strASCLLToString(string str)
+        {
+            var sb = new StringBuilder();
+            var bt = Encoding.ASCII.GetBytes(str);
+            foreach(var b in bt)
+            {
+                sb.Append(b.ToString());
+            }
             return sb.ToString();
         }
 

@@ -50,8 +50,10 @@
     <Compile Include="Signature\Methods\Common.cs" />
     <Compile Include="Signature\Methods\Encrypt.cs" />
     <Compile Include="Signature\Methods\Do_Signature.cs" />
+    <Compile Include="Signature\Model\AddDomainRecordModel.cs" />
     <Compile Include="Signature\Model\CommonParameter.cs" />
     <Compile Include="Signature\Model\DescribeDomainRecordsModel.cs" />
+    <Compile Include="Signature\Model\UpdateDomainRecordModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

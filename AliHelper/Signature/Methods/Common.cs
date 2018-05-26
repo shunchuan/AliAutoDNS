@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
 using AliHelper.Signature.Extends;
+using System.Net;
 
 namespace AliHelper.Signature.Methods
 {
@@ -22,6 +23,7 @@ namespace AliHelper.Signature.Methods
             return dateTime.ToString(formart);
         }
 
+
         /// <summary>
         /// 返回当前时间的ISO8601标准格式时间
         /// </summary>
@@ -33,9 +35,23 @@ namespace AliHelper.Signature.Methods
             return dateTime.ToString(formart);
         }
 
-        public static string GetURLEncoder(string str)
+        public static string GetURLEncoder(string strs)
         {
-           return Uri.EscapeDataString(str);
+            string aaa = "我爱你";
+            // StringBuilder sb = new StringBuilder();
+            ////return Uri.EscapeDataString(str);
+            //return Uri.EscapeUriString(strs);
+            return Uri.EscapeDataString(strs);
+            for (var index = 0; index < aaa.Length; index++)
+            {
+                Console.Write(aaa[index]);
+            }
+            foreach (var str in strs)
+            {
+
+            }
+
+            return "";
         }
 
         /// <summary>
@@ -76,6 +92,24 @@ namespace AliHelper.Signature.Methods
             r = new Random(iSeed);
             rtn = r.Next(1000000000, 2147483647);
             return rtn;
+        }
+
+        /// <summary>
+        /// 区分大小写排序
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <returns></returns>
+        public static Dictionary<string, string> AsciiDictionarySort(Dictionary<string, string> dict)
+        {
+            Dictionary<string, string> asciiDic = new Dictionary<string, string>();
+            string[] arrKeys = dict.Keys.ToArray();
+            Array.Sort(arrKeys, string.CompareOrdinal);
+            foreach (var key in arrKeys)
+            {
+                string value = dict[key];
+                asciiDic.Add(key, value);
+            }
+            return asciiDic;
         }
     }
 }

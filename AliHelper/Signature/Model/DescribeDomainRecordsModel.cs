@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AliHelper.Signature.Model
 {
+    /// <summary>
+    /// 获取解析记录列表参数类
+    /// </summary>
     public class DescribeDomainRecordsModel
     {
         /// <summary>

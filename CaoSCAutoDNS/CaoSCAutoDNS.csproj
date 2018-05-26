@@ -37,14 +37,6 @@
     <StartupObject>CaoSCAutoDNS.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="aliyun-net-sdk-Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\aliyun-net-sdk-Core.dll</HintPath>
-    </Reference>
-    <Reference Include="aliyun-net-sdk-Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Windows Service\AutoDNS\AutoDNS\bin\Debug\aliyun-net-sdk-Domain.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
@@ -62,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicJson.cs" />
     <Compile Include="Methods\Config.cs" />
     <Compile Include="Methods\HttpUtility.cs" />
     <Compile Include="Methods\IPHelper.cs" />
@@ -73,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AliHelper\AliHelper.csproj">
