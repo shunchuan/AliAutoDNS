@@ -1,6 +1,9 @@
 # AliAutoDNS
 基于阿里云的域名解析接口，实现本地动态IP的动态解析
 
+# 当前版本
+- V1.0.0
+
 ## 目的
 - 因为个人家庭网络一般没有静态IP，即使域名解析到家庭网络IP地址，宽带运营商也会不定时分配其他IP地址。
 - 此程序实现个人家庭网络的外网映射，将域名解析地址指向个人公网IP，实现通过域名访问家庭网络。路由器部分需要自己单独做端口转发。
@@ -9,9 +12,10 @@
 - 阿里云域名提供通过API添加修改解析记录的功能（其他域名服务实也应该支持）。程序访问外网，实时查询本地公网IP地址，并根据实际情况判断是否更换域名指向IP。
 
 ## 使用者
-- 首先注册阿里云账户，购买阿里云域名，前往AccessKeys获取具有管理云解析(DNS)权限的AccessKeyId和AccessKeySecret
-- 修改.config配置文件中的value值，根据个人实际情况修改。
-- 一般修改```AccessKeyId```、```AccessKeySecret```、```SetDNSDomainName```、```SetDNSHostRecord```、```BootFromBoot```即可。
+- 首先注册阿里云账户，购买阿里云域名，前往AccessKeys获取具有管理云解析(DNS)权限的AccessKeyId和AccessKeySecret；
+- 下载[压缩文件](https://github.com/shunchuan/AliAutoDNS/blob/master/software/AliAutoDNS_1.0.0.rar)，解压到运行路径；
+- 修改.config配置文件中的value值，根据个人实际情况修改；
+- 一般修改```AccessKeyId```、```AccessKeySecret```、```SetDNSDomainName```、```SetDNSHostRecord```、```BootFromBoot```即可；
 - 注意：如果你域名下的解析记录很多(成百上千，否则可忽略)，解析主机记录尽量写的与其他记录无重叠，目前只查询前500条过滤数据进行筛选。比如要解析abc记录，不要有500个以上的包含abc字段的主机记录存在。
 ```
 <?xml version="1.0" encoding="utf-8"?>
