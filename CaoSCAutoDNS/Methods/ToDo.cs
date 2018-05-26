@@ -35,7 +35,7 @@ namespace CaoSCAutoDNS.Methods
                 Log.ConsoleWrite(ex.Message);
                 Log.ConsoleWriteNoDate("系统已停止,按任意键退出...");
             }
-            Console.Read();
+            Console.Read();            
         }
 
         /// <summary>
