@@ -101,11 +101,13 @@ namespace CaoSCAutoDNS.Methods
                 {
                     Log.ConsoleWrite("请求接口失败");
                     Log.ConsoleWriteNoDate(ex.Message);
+                    Log.ConsoleWriteNoDate("继续监视中...");
                 }
                 catch (Exception ex)
                 {
                     Log.ConsoleWrite("未知错误");
                     Log.ConsoleWriteNoDate(ex.Message);
+                    Log.ConsoleWriteNoDate("继续监视中...");
                 }
             }
         }
