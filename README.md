@@ -33,7 +33,7 @@
     <add key="SetDNSHostRecord" value="xxx"/>
     <!--系统休眠时间 毫秒-->
     <add key="SystemSleepTime" value="3000"/>
-    <!--域名解析TTL-->
+    <!--域名解析TTL 如果是免费版最低为600 详情查看 https://help.aliyun.com/document_detail/29806.html?spm=a2c4g.11186623.2.7.QOM9MG -->
     <add key="DomainNameTTL" value="120"/>
     <!--当前解析线路 默认 ，或参考 https://help.aliyun.com/document_detail/29807.html?spm=a2c4g.11186623.2.8.Pe58xG -->
     <add key="DNSLine" value="default"/>
